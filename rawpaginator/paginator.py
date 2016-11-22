@@ -11,6 +11,7 @@ class RawQuerySetPaginator(DefaultPaginator):
         super(RawQuerySetPaginator,self).__init__(object_list,per_page,orphans,allow_empty_first_page)
         self.raw_query_set = self.object_list
         self.connection = connections[self.raw_query_set.db]
+        self._count = None
 
     def _get_count(self):
         if self._count is None:
